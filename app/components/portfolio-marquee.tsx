@@ -1,5 +1,6 @@
+import { CardBody } from "./card"
 import { Badge } from "./ui/badge"
-import { Card } from "./ui/card"
+
 import { ExternalLink, Github } from "lucide-react"
 
 interface PortfolioExample {
@@ -67,7 +68,7 @@ export function PortfolioMarquee() {
     <div className="relative overflow-hidden py-8">
       <div className="flex animate-marquee space-x-6">
         {[...portfolioExamples, ...portfolioExamples].map((portfolio, index) => (
-          <Card
+          <CardBody
             key={`${portfolio.id}-${index}`}
             className="flex-shrink-0 w-80 bg-card/50 backdrop-blur-sm border-border/50 hover:bg-card/70 transition-all duration-300 group"
           >
@@ -98,7 +99,7 @@ export function PortfolioMarquee() {
                 ))}
               </div>
             </div>
-          </Card>
+          </CardBody>
         ))}
       </div>
     </div>

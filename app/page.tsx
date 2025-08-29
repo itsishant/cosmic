@@ -6,8 +6,28 @@
   import Hello from './components/robot';
   import Particles from './components/background';
 import { PortfolioMarquee } from './components/portfolio-marquee';
+import { InfiniteMovingCards } from './components/ui/infinite-moving-cards';
 
   export default function Home() {
+
+    const testimonials = [
+  {
+    image: "./i1.png"   
+  },
+  {    
+    image: "./i2.png"   
+  },
+  {
+    image:"./i3.png"
+  },
+  {
+    image: "./i4.png"
+  },
+  {
+    image: "./i5.png"
+  },
+];
+
     return (
       <div className="relative min-h-screen overflow-hidden">
 <div className="absolute inset-0 -z-10">
@@ -37,9 +57,10 @@ import { PortfolioMarquee } from './components/portfolio-marquee';
       Cosmic
     </motion.span>
 
-    <div className="text-neutral-500 text-2xl mt-7 text-center max-w-2xl">
-      Create stunning portfolios that shine across the digital universe
+    <div className="text-neutral-500 text-2xl mt-7 text-center max-w-xl">
+    Create stunning portfolios that shine across the digital universe showcasing your talent with style and clarity
     </div>
+
     <div className='flex items-center mt-10 space-x-5'>
       <button className={`${GeistSans.className} p-3 hover:bg-neutral-50 rounded-md font-medium flex  tracking-tight bg-neutral-200 text-black`}>
       <Rocket className='mr-2'/>
@@ -78,7 +99,9 @@ import { PortfolioMarquee } from './components/portfolio-marquee';
         From signup to stellar portfolio in just 4 simple steps
       </span>
     </div>
-    <div className='flex items-center justify-center'>
+    <motion.div
+  
+    className='flex items-center justify-center'>
       <div className=' flex items-center justify-center mt-28'>
         <div className='flex space-x-8'>
       <Step logo={UserPlus}
@@ -104,7 +127,7 @@ import { PortfolioMarquee } from './components/portfolio-marquee';
       </div>
       </div>
       
-    </div>
+    </motion.div>
     <button className={`${GeistSans.className} mt-16 p-3 hover:bg-neutral-50 rounded-md font-medium flex  tracking-tight bg-neutral-200 text-black`}>
       <Rocket className='mr-2'/>
       Start Building Now
@@ -118,7 +141,7 @@ import { PortfolioMarquee } from './components/portfolio-marquee';
   viewport={{ once: true, amount: 0.5 }}
   transition={{ duration: 0.6 }}
 
-      className={`${GeistSans.className} tracking-tight font-semibold text-shadow shadow-amber-600 
+      className={`${GeistSans.className} tracking-tight mt-6 font-semibold text-shadow shadow-amber-600 
         bg-clip-text text-5xl justify-center text-transparent 
         bg-gradient-to-b from-neutral-500 via-neutral-200 to-neutral-200 
         dark:from-neutral-200 dark:via-white dark:to-neutral-200`}
@@ -133,10 +156,31 @@ import { PortfolioMarquee } from './components/portfolio-marquee';
 
     <section className="relative z-10 py-20 px-4">
           <div className="max-w-6xl mx-auto">
-
-            <PortfolioMarquee />
+            <InfiniteMovingCards
+        items={testimonials}
+        direction="right"
+        speed="slow"
+      />
           </div>
         </section>
+</div>
+
+<div className='flex justify-center border-t-1 border-neutral-800 m-8 items-center w-full '>
+  <span className='mt-8'>
+      <span className={`${GeistSans.className} tracking-tight font-semibold text-shadow shadow-amber-600 
+        bg-clip-text text-2xl 
+        text-neutral-500`}>
+        Made with</span> <span className='text-xl'>💜</span>
+        <span className={`${GeistSans.className} tracking-tight font-semibold text-shadow shadow-amber-600 
+        bg-clip-text text-2xl 
+        text-neutral-500`}>
+          by
+        </span>
+        <span className={`${GeistSans.className} tracking-tight font-semibold text-shadow shadow-amber-600 
+        bg-clip-text text-2xl text-transparent 
+        bg-gradient-to-b from-neutral-500 via-neutral-500 to-neutral-700 
+        dark:from-neutral-200 dark:via-white dark:to-neutral-800`}> Ishant</span>
+    </span>
 </div>
       </div>
     );
