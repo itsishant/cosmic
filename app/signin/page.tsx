@@ -13,6 +13,7 @@ import {
 import { Input } from "../components/ui/input"
 import axios from "axios"
 import { Label } from "../components/ui/label"
+import {useRouter} from "next/navigation";
 
 interface Detail {
     respone: string,
@@ -21,6 +22,7 @@ interface Detail {
 
 export default function Signup() {
 
+    const router = useRouter();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -32,6 +34,10 @@ export default function Signup() {
         })
         const token = response.data.token;
         localStorage.setItem("token", token);
+    }
+
+    const routing = () => {
+        router.push("/signin")
     }
 
   return (
@@ -88,9 +94,11 @@ export default function Signup() {
             </Button>
             <p className="text-sm text-center text-gray-600">
               Don't have an account?{" "}
-              <a href="#" className="underline underline-offset-4 text-indigo-600">
+              <button 
+              onClick={routing}
+              className="underline underline-offset-4 text-indigo-600">
                 Signup
-              </a>
+              </button>
             </p>
           </CardFooter>
         </form>
