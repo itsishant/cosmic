@@ -2,9 +2,26 @@
 import { GeistSans } from "geist/font/sans"
 import axios from "axios"
 import React from "react"
+import { useState } from "react"
+
+interface Detail{
+  username: string,
+  email: string,
+  password: string
+}
 
 export function Button({ children, className = "", ...props }: React.ComponentProps<"button">) {
-  
+
+  // const handleClick = async () => {
+  //   const response = await axios.post("http://localhost:3000/api/v1/signup", {
+  //     username,
+  //     email,
+  //     password
+  //   });
+  //   const result = response.data;
+
+  //   console.log(result);
+  // }
 
   return (
     <button 

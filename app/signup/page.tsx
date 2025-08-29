@@ -1,5 +1,7 @@
+"use client"
 import { GeistSans } from "geist/font/sans"
 import { Button } from "../components/ui/button"
+import { useState } from "react";
 import {
   Card,
   CardContent,
@@ -13,6 +15,20 @@ import axios from "axios"
 import { Label } from "../components/ui/label"
 
 export default function Signup() {
+
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const handleClick = async () => {
+        const response = await axios.post("http://localhost:3000/api/v1/signup", {
+            username,
+            email,
+            password
+        })
+        console.log(response.data);
+    }
+
   return (
     <div className="flex justify-center items-center min-h-screen ">
       <Card className="w-full max-w-sm shadow-xl rounded-2xl border space-y-2 border-gray-200">
@@ -30,6 +46,9 @@ export default function Signup() {
             <div className="grid gap-2">
               <Label htmlFor="name">Username</Label>
               <Input
+              onChange={(e) => {
+                setUsername(e.target.value)
+              }}
                 id="name"
                 type="text"
                 placeholder="John Doe"
@@ -40,6 +59,9 @@ export default function Signup() {
             <div className="grid gap-2">
               <Label htmlFor="email">Email</Label>
               <Input
+              onChange={(e) => {
+                setEmail(e.target.value)
+              }}
                 id="email"
                 type="email"
                 placeholder="m@example.com"
@@ -50,6 +72,9 @@ export default function Signup() {
             <div className="grid gap-2">
               <Label htmlFor="password">Password</Label>
               <Input
+              onChange={(e) => {
+                setPassword(e.target.value)
+              }}
                 id="password"
                 type="password"
                 placeholder="****************"
@@ -61,6 +86,7 @@ export default function Signup() {
 
           <CardFooter className="flex flex-col gap-3">
             <Button
+            onClick={handleClick}
               type="submit"
               className="w-full text-white rounded-lg hover: cursor-pointer"
             >
