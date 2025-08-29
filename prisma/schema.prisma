@@ -15,11 +15,37 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
+enum Level {
+  Beginner
+  Intermediate
+  Advanced
+}
+
 model User {
   id        Int      @id @default(autoincrement())
   username  String   @unique
   email     String   @unique
-  password  String   
+  password  String
+
+  profile Profile?   
+  skills  Skills?
 } 
 
 
+model Profile {
+  id        Int     @id @default(autoincrement())
+  shortbio  String   
+  headline  String
+  location  String
+  avatar    String
+  userId    Int      @unique 
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)   
+}
+
+model Skills {
+  id        Int    @id @default(autoincrement())
+  skillName String
+  level     Level
+  userId    Int    @unique 
+  user      User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}

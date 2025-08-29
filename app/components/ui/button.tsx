@@ -29,8 +29,8 @@ export function Button({ children, className = "", ...props }: React.ComponentPr
                   bg-gradient-to-b from-neutral-700 via-neutral-500 to-neutral-700 
         dark:from-neutral-500 dark:via-neutral-600 dark:to-neutral-800 transition-all 
                   disabled:opacity-50 disabled:pointer-events-none 
-                  text-neutral-300 
-                  focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 ${className}`}
+                  text-neutral-300 border-0
+                  focus:outline-none focus:ring-1  focus:ring-offset-2 ${className}`}
       {...props}
     >
       {children}

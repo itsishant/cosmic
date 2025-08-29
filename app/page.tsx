@@ -15,7 +15,7 @@ import { useRouter } from 'next/navigation';
 
     const testimonials = [
   {
-    image: "./i1.png"   
+    image: "./i1.png"     
   },
   {    
     image: "./i2.png"   

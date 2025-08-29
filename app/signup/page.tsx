@@ -102,7 +102,7 @@ export default function Signup() {
             <Button
             onClick={handleClick}
               type="button"
-              className="w-full text-white rounded-lg hover: cursor-pointer"
+              className="w-full text-white rounded-lg border-0 border-neutral-900 hover: cursor-pointer"
             >
               Sign Up
             </Button>
@@ -110,7 +110,7 @@ export default function Signup() {
               Already have an account?{" "}
               <button 
               onClick={routing}
-         className="underline underline-offset-4 text-indigo-600">
+         className="underline hover: cursor-pointer underline-offset-4 text-indigo-600">
                 Login
               </button>
             </p>

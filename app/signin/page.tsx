@@ -37,7 +37,7 @@ export default function Signup() {
     }
 
     const routing = () => {
-        router.push("/signin")
+        router.push("/signup")
     }
 
   return (
@@ -96,7 +96,7 @@ export default function Signup() {
               Don't have an account?{" "}
               <button 
               onClick={routing}
-              className="underline underline-offset-4 text-indigo-600">
+              className="underline hover: cursor-pointer underline-offset-4 text-indigo-600">
                 Signup
               </button>
             </p>
