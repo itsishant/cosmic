@@ -7,6 +7,9 @@
   import Particles from './components/background';
 import { PortfolioMarquee } from './components/portfolio-marquee';
 import { InfiniteMovingCards } from './components/ui/infinite-moving-cards';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+
 
   export default function Home() {
 
@@ -27,6 +30,13 @@ import { InfiniteMovingCards } from './components/ui/infinite-moving-cards';
     image: "./i5.png"
   },
 ];
+
+const router = useRouter();
+const handleClick = () => {
+  setTimeout(() => {
+    router.push("/signup");
+  }, 200)
+}
 
     return (
       <div className="relative min-h-screen overflow-hidden">
@@ -62,15 +72,20 @@ import { InfiniteMovingCards } from './components/ui/infinite-moving-cards';
     </div>
 
     <div className='flex items-center mt-10 space-x-5'>
-      <button className={`${GeistSans.className} p-3 hover:bg-neutral-50 rounded-md font-medium flex  tracking-tight bg-neutral-200 text-black`}>
+      <button
+      onClick={handleClick}
+      className={`${GeistSans.className} p-3 hover:cursor-pointer hover:bg-neutral-50 rounded-md font-medium flex  tracking-tight bg-neutral-200 text-black`}>
       <Rocket className='mr-2'/>
       Launch Your Portfolio
     </button>
-
-  <button className={`${GeistSans.className} flex p-3 rounded-md tracking-tight border-1`}>
+    
+  <button
+  onClick={handleClick}
+  className={`${GeistSans.className} flex p-3 hover:cursor-pointer rounded-md tracking-tight border-1`}>
     <ExternalLink  className='mr-2'/>
     Get Started
   </button>
+
   </div>
     </motion.div>
           <div className="flex-1 w-[900px] h-[900px]">
@@ -128,7 +143,9 @@ import { InfiniteMovingCards } from './components/ui/infinite-moving-cards';
       </div>
       
     </motion.div>
-    <button className={`${GeistSans.className} mt-16 p-3 hover:bg-neutral-50 rounded-md font-medium flex  tracking-tight bg-neutral-200 text-black`}>
+    <button 
+    onClick={handleClick}
+    className={`${GeistSans.className} hover:cursor-pointer mt-16 p-3 hover:bg-neutral-50 rounded-md font-medium flex  tracking-tight bg-neutral-200 text-black`}>
       <Rocket className='mr-2'/>
       Start Building Now
     </button>
