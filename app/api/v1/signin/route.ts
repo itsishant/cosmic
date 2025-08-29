@@ -2,7 +2,7 @@ import { PrismaClient } from "@/app/generated/prisma";
 import { hashPassword, verifyPassword } from "@/app/lib/auth";
 import { createToken } from "@/app/lib/jwt";
 import { NextRequest, NextResponse } from "next/server";
-import z, { safeParse } from "zod";
+import z from "zod";
 
 const SigninSchema = z.object({
     email: z.string().email(),

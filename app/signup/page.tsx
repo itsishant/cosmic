@@ -14,6 +14,11 @@ import { Input } from "../components/ui/input"
 import axios from "axios"
 import { Label } from "../components/ui/label"
 
+interface Detail {
+    respone: string,
+    token: string
+}
+
 export default function Signup() {
 
     const [username, setUsername] = useState("");
@@ -21,17 +26,20 @@ export default function Signup() {
     const [password, setPassword] = useState("");
 
     const handleClick = async () => {
-        const response = await axios.post("http://localhost:3000/api/v1/signup", {
+
+        const response = await axios.post <Detail> ("http://localhost:3000/api/v1/signup", {
             username,
             email,
             password
         })
-        console.log(response.data);
+        const token = response.data.token;
+        localStorage.setItem("token", token);
+
     }
 
   return (
-    <div className="flex justify-center items-center min-h-screen ">
-      <Card className="w-full max-w-sm shadow-xl rounded-2xl border space-y-2 border-gray-200">
+    <div className="flex justify-center items-center min-h-screen shadow-2xs shadow-neutral-200">
+      <Card className="w-full max-w-[400px] shadow-xl rounded-2xl border space-y-2 border-gray-500">
         <CardHeader>
           <CardTitle className={`${GeistSans.className} tracking-tight text-2xl font-bold text-center text-neutral-300`}>
             Create an account
@@ -53,7 +61,7 @@ export default function Signup() {
                 type="text"
                 placeholder="John Doe"
                 required
-                className="border-gray-300"
+                className="border-gray-700"
               />
             </div>
             <div className="grid gap-2">
@@ -66,7 +74,7 @@ export default function Signup() {
                 type="email"
                 placeholder="m@example.com"
                 required
-                className="border-gray-300"
+                className="border-gray-700"
               />
             </div>
             <div className="grid gap-2">
@@ -77,7 +85,7 @@ export default function Signup() {
               }}
                 id="password"
                 type="password"
-                placeholder="****************"
+                placeholder="✶✶✶✶✶✶✶✶"
                 required
                 className="border-gray-700 "
               />
@@ -87,7 +95,7 @@ export default function Signup() {
           <CardFooter className="flex flex-col gap-3">
             <Button
             onClick={handleClick}
-              type="submit"
+              type="button"
               className="w-full text-white rounded-lg hover: cursor-pointer"
             >
               Sign Up

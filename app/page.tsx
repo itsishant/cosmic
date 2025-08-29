@@ -194,7 +194,7 @@ const handleClick = () => {
           by
         </span>
         <span className={`${GeistSans.className} tracking-tight font-semibold text-shadow shadow-amber-600 
-        bg-clip-text text-2xl text-transparent 
+        bg-clip-text text-xl text-transparent 
         bg-gradient-to-b from-neutral-500 via-neutral-500 to-neutral-700 
         dark:from-neutral-200 dark:via-white dark:to-neutral-800`}> Ishant</span>
     </span>
