@@ -1,6 +1,6 @@
 "use client"
 import { GeistSans } from "geist/font/sans"
-import { Button } from "../components/ui/button"
+import { Button } from "../../components/ui/button"
 import { useState } from "react";
 import {
   Card,
@@ -9,11 +9,11 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "../components/ui/card"
-import { Input } from "../components/ui/input"
-import axios from "axios"
-import { Label } from "../components/ui/label"
-import {useRouter} from "next/navigation";
+} from "../../components/ui/card"
+import { Input } from "../../components/ui/input"
+import { Label } from "../../components/ui/label"
+import {redirect, useRouter} from "next/navigation";
+import { signIn } from "next-auth/react";
 
 interface Detail {
     respone: string,
@@ -22,19 +22,19 @@ interface Detail {
 
 export default function Signup() {
 
+  
     const router = useRouter();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleClick = async () => {
-
-        const response = await axios.post <Detail> ("http://localhost:3000/api/v1/signin", {
-            email,
-            password
-        })
-        const token = response.data.token;
-        localStorage.setItem("token", token);
-    }
+const handleClick = async () => {
+  await signIn("credentials", {
+    redirect: true,
+    email,
+    password,
+    callbackUrl: "/dashboard",
+  });
+};
 
     const routing = () => {
         router.push("/signup")

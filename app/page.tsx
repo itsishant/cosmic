@@ -5,10 +5,10 @@
   import { motion } from 'framer-motion';
   import Hello from './components/robot';
   import Particles from './components/background';
-import { PortfolioMarquee } from './components/portfolio-marquee';
 import { InfiniteMovingCards } from './components/ui/infinite-moving-cards';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { getServerSession } from 'next-auth';
 
 
   export default function Home() {
@@ -32,6 +32,8 @@ import { useRouter } from 'next/navigation';
 ];
 
 const router = useRouter();
+const session = getServerSession();
+
 const handleClick = () => {
   setTimeout(() => {
     router.push("/signup");
