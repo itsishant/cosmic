@@ -28,12 +28,14 @@ export default function Signup() {
     const [password, setPassword] = useState("");
 
 const handleClick = async () => {
-  await signIn("credentials", {
+  const res = await signIn("credentials", {
     redirect: true,
     email,
     password,
     callbackUrl: "/dashboard",
   });
+
+  console.log(res)
 };
 
     const routing = () => {

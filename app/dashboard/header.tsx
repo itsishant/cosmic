@@ -6,9 +6,9 @@ export const Header = () => {
     <div className="min-w-screen border-b border-neutral-700 mt-6">
       <div className="flex mb-2 justify-between items-center px-28 py-4">
         <div>
-          <span className={`${GeistSans.className} font-semibold tracking-tight text-neutral-300 text-4xl`}>
+          <button className={`${GeistSans.className} hover: cursor-pointer border-0 font-semibold tracking-tight text-neutral-300 text-4xl`}>
             Cosmic Dashboard
-          </span>
+          </button>
           <div className={`${GeistSans.className} mt-0.5 font-light text-neutral-500`}>
             Manage your profile, skills, experience, projects, and theme
           </div>

@@ -36,7 +36,7 @@ const session = getServerSession();
 
 const handleClick = () => {
   setTimeout(() => {
-    router.push("/signup");
+    router.push("/auth/signup");
   }, 200)
 }
 
