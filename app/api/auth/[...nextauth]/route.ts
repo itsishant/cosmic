@@ -32,8 +32,8 @@ providers: [
             return null
         }
 
-        const isVaild = bcrypt.compare(
-            credentials?.password,
+        const isVaild = await bcrypt.compare(
+            credentials.password,
             findUser.password
         )
 

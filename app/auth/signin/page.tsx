@@ -1,4 +1,5 @@
 "use client"
+
 import { GeistSans } from "geist/font/sans"
 import { Button } from "../../components/ui/button"
 import { useState } from "react";
@@ -29,17 +30,23 @@ export default function Signup() {
 
 const handleClick = async () => {
   const res = await signIn("credentials", {
-    redirect: true,
+    redirect: false,
     email,
     password,
-    callbackUrl: "/dashboard",
   });
 
-  console.log(res)
+  if(res?.error){
+    alert(
+      "invaild credentials"
+    )
+  } else {
+    router.push("/dashboard")
+  }
+
 };
 
     const routing = () => {
-        router.push("/signup")
+        router.push("/auth/signup")
     }
 
   return (

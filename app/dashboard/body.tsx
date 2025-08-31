@@ -1,7 +1,7 @@
 "use client"
 
 import { GeistSans } from "geist/font/sans"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 interface Form {
   Name: string
@@ -99,6 +99,29 @@ export const Body = () => {
     setForm({ ...form, [field]: value })
   }
 
+  const handleSave = () => {
+    const data = {form, personalInfo, skills, experience, projects, theme}
+    localStorage.setItem("portfolioData", JSON.stringify(data));
+  }
+
+  useEffect(() => {
+    const stored = localStorage.getItem("portfolioData");
+    if(stored) {
+      const data = JSON.parse(stored);
+      setForm(data.form || form)
+      setPersonalInfo(data.personalInfo || personalInfo)
+      setSkills(data.skills || [])
+      setExperience(data.experience || [])
+      setProjects(data.projects || [])
+      setTheme(data.theme || { primary: "#22d3ee", radius: "md", density: "comfortable" })
+    }
+  }, [])
+
+  useEffect(() => {
+  const data = { form, personalInfo, skills, experience, projects, theme };
+  localStorage.setItem("portfolioData", JSON.stringify(data));
+}, [form, personalInfo, skills, experience, projects, theme]);
+
   const addSkill = () => {
     const s = skillInput.trim()
     if (!s || skills.includes(s)) return
@@ -127,7 +150,7 @@ export const Body = () => {
   const themePaddingClass = theme.density === "compact" ? "p-3" : "p-5"
 
   return (
-    <div className="w-full border-b border-neutral-700 mt-6 flex justify-center">
+    <div className="w-full border-b border-neutral-700 mt-2 flex justify-center">
       <div className="w-full max-w-[1330px] h-[600px] border-2 shadow-md shadow-neutral-900 border-neutral-600 rounded-2xl flex flex-col mx-6 p-6">
         <div>
           <span className={`${GeistSans.className} text-xl text-neutral-300 font-semibold`}>Editor</span>
@@ -191,14 +214,27 @@ export const Body = () => {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <span className={`${GeistSans.className} text-sm font-medium text-neutral-200`}>Avatar URL</span>
-                  <input
-                    className="p-2 rounded-md border border-neutral-600 text-white"
-                    placeholder="https://your-domain.com/avatar.png"
-                    value={form.AvatarUrl}
-                    onChange={(e) => handleChange("AvatarUrl", e.target.value)}
-                  />
-                </div>
+  <span className={`${GeistSans.className} text-sm font-medium text-neutral-200`}>Avatar</span>
+  <input
+    type="file"
+    accept="image/*"
+    onChange={(e) => {
+      const file = e.target.files?.[0]
+      if (!file) return
+
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        setForm({ ...form, AvatarUrl: reader.result as string })
+      }
+      reader.readAsDataURL(file)
+    }}
+    className="p-2 rounded-md border border-neutral-600 text-white"
+  />
+  {form.AvatarUrl && (
+    <img src={form.AvatarUrl} alt="Avatar" className="mt-2 w-24 h-24 rounded-full object-cover" />
+  )}
+</div>
+
               </div>
             </>
           )}

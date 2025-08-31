@@ -12,7 +12,7 @@ const secret = process.env.JWT_SECRET as unknown as string;
 const client = new PrismaClient();
 
 const UserSchema = z.object({
-    username: z.string().min(6, {message: "min 3 characters"}),
+    username: z.string().min(3, {message: "min 3 characters"}),
     email: z.string().email(),
     password: z.string().min(6,({message: "min 6 length"}))
 })
