@@ -1,6 +1,7 @@
 "use client"
 
 import { GeistSans } from "geist/font/sans"
+import { useEffect, useState } from "react"
 
 interface Props {
   form: any
@@ -12,6 +13,18 @@ interface Props {
 
 export default function Template1({ form, personalInfo, skills, experience, projects }: Props) {
 
+  
+    const [data, setData] = useState(null);
+    const [templateName, setTemplateName] = useState<any>("Template1");
+
+  useEffect(() => {
+      const stored = localStorage.getItem("portfolioData");
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        setData(parsed);
+        setTemplateName(parsed.theme?.template || "Template1");
+      }
+    }, []);
 
     const Button = ({ children, onClick, className }: { children: React.ReactNode; onClick?: () => void; className?: string }) => (
   <button
@@ -21,6 +34,7 @@ export default function Template1({ form, personalInfo, skills, experience, proj
     {children}
   </button>
 )
+
 
   return (
     <main className="min-h-screen bg-neutral-900 text-white">
@@ -222,5 +236,5 @@ export default function Template1({ form, personalInfo, skills, experience, proj
         </div>
       </footer>
     </main>
-  )
+  );
 }
