@@ -41,7 +41,9 @@ interface ThemeState {
   primary: string
   radius: "sm" | "md" | "lg"
   density: "comfortable" | "compact"
+  template: "Template1" | "Template2"
 }
+
 
 export const Body = () => {
   const [active, setActive] = useState<"Profile" | "Personal Info" | "Skills" | "Experience" | "Projects" | "Theme">(
@@ -91,6 +93,7 @@ export const Body = () => {
     primary: "#22d3ee",
     radius: "md",
     density: "comfortable",
+    template: "Template1"
   })
 
   const tabs = ["Profile", "Personal Info", "Skills", "Experience", "Projects", "Theme"]
@@ -578,19 +581,19 @@ export const Body = () => {
                     onChange={(e) => setTheme({ ...theme, primary: e.target.value })}
                   />
                 </div>
-                <div className="flex flex-col">
-                  <span className={`${GeistSans.className} text-sm font-medium text-neutral-200`}>Radius</span>
-                  <select
-                    aria-label="Corner radius"
-                    className="p-2 rounded-md border border-neutral-600 text-white bg-neutral-800"
-                    value={theme.radius}
-                    onChange={(e) => setTheme({ ...theme, radius: e.target.value as ThemeState["radius"] })}
-                  >
-                    <option value="sm">Small</option>
-                    <option value="md">Medium</option>
-                    <option value="lg">Large</option>
-                  </select>
-                </div>
+                            <div className="flex flex-col">
+                <span className={`${GeistSans.className} text-sm font-medium text-neutral-200`}>Template</span>
+                <select
+                  aria-label="Template"
+                  className="p-2 rounded-md border border-neutral-600 text-white bg-neutral-800"
+                  value={theme.template}
+                  onChange={(e) => setTheme({ ...theme, template: e.target.value as ThemeState["template"] })}
+                >
+                  <option value="Template1">Template 1</option>
+                  <option value="Template2">Template 2</option>
+                </select>
+              </div>
+
                 <div className="flex flex-col">
                   <span className={`${GeistSans.className} text-sm font-medium text-neutral-200`}>Density</span>
                   <select

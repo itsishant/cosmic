@@ -29,6 +29,7 @@
     "@radix-ui/react-tooltip": "^1.1.6",
     "@splinetool/react-spline": "^4.1.0",
     "@supabase/supabase-js": "^2.56.0",
+    "@tabler/icons-react": "^3.34.1",
     "@types/axios": "^0.9.36",
     "@types/bcrypt": "^6.0.0",
     "@types/dotenv": "^6.1.1",

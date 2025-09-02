@@ -26,15 +26,25 @@ useEffect(() => {
 }, []);
 
 
-  if (!form) return <div>Loading...</div>
-
-  return (
-    <>
-      {template === "dark" ? (
-        <Template1 form={form} personalInfo={personalInfo} skills={skills} experience={experience} projects={projects} />
-      ) : (
-        <Template2 form={form} personalInfo={personalInfo} skills={skills} experience={experience} projects={projects} />
-      )}
-    </>
-  )
+return (
+  <>
+    {template === "Template1" ? (
+      <Template1
+        form={form}
+        personalInfo={personalInfo}
+        skills={skills}
+        experience={experience}
+        projects={projects}
+      />
+    ) : (
+      <Template2
+        form={form}
+        personalInfo={personalInfo}
+        skills={skills}
+        experience={experience}
+        projects={projects}
+      />
+    )}
+  </>
+)
 }
