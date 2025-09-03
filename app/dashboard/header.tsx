@@ -36,7 +36,7 @@ const loadingStates = [
 
     const handleClick = () => {
       setLoading(true);
-      setShowDashboard(false);
+      setShowDashboard(false);``
       
   const data = JSON.parse(localStorage.getItem("portfolioData") || "{}");
   const name = data.form.Name;
