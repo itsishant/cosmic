@@ -44,7 +44,6 @@ providers: [
         return {
             id: findUser.id.toString(),
             email: findUser.email,
-            username: findUser.username
         }
 
     }

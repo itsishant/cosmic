@@ -23,16 +23,25 @@
   export default function Signup() {
 
       const route = useRouter();
-      const [username, setUsername] = useState("");
       const [email, setEmail] = useState("");
       const [password, setPassword] = useState("");
-      
+      const [emailError, setEmailError] = useState("");
+      const [passwordError, setPasswordError] = useState("");
 
       const handleClick = async () => {
 
+        let vaild = false;
+
+        if(!password) {
+        setPasswordError(
+        "email and password required"
+        ) 
+        
+        vaild = true;
+      }
+
         try {
           const response = await axios.post <Detail> ("http://localhost:3000/api/v1/signup", {
-              username,
               email,
               password
           })
@@ -64,36 +73,25 @@
           <form className="space-y-6">
             <CardContent className="space-y-4">
               <div className="grid gap-2">
-                <Label htmlFor="name">Username</Label>
-                <Input
-                onChange={(e) => {
-                  setUsername(e.target.value)
-                }}
-                  id="name"
-                  type="text"
-                  placeholder="John Doe"
-                  required
-                  className="border-gray-700"
-                />
-              </div>
-              <div className="grid gap-2">
                 <Label htmlFor="email">Email</Label>
                 <Input
                 onChange={(e) => {
                   setEmail(e.target.value)
+                  setPasswordError("")
                 }}
                   id="email"
                   type="email"
                   placeholder="m@example.com"
-                  required
                   className="border-gray-700"
                 />
+                {emailError && <p  className={`${GeistSans.className} flex justify-center font-semibold text-red-800 `}>{emailError}</p>}
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="password">Password</Label>
                 <Input
                 onChange={(e) => {
                   setPassword(e.target.value)
+                  setPasswordError("")
                 }}
                   id="password"
                   type="password"
@@ -101,6 +99,7 @@
                   required
                   className="border-gray-700 "
                 />
+                {passwordError && <p className={`${GeistSans.className} flex justify-center font-semibold text-red-800 `}>{passwordError}</p>}
               </div>
             </CardContent>
 

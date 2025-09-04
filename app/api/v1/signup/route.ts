@@ -12,7 +12,6 @@ const secret = process.env.JWT_SECRET as unknown as string;
 const client = new PrismaClient();
 
 const UserSchema = z.object({
-    username: z.string().min(3, {message: "min 3 characters"}),
     email: z.string().email(),
     password: z.string().min(6,({message: "min 6 length"}))
 })
@@ -20,7 +19,7 @@ const UserSchema = z.object({
 export async function POST(req: NextRequest) {
     const body = await req.json();
 
-    const { username, email, password} = body;
+    const { email, password} = body;
     const bodyParse = UserSchema.safeParse(body);
 
     if(!bodyParse.success)
@@ -41,7 +40,6 @@ export async function POST(req: NextRequest) {
 
         const newUser = await client.user.create({
             data:{
-                username: username,
                 email: email,
                 password: hashedPassword
             }

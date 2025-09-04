@@ -27,25 +27,41 @@ export default function Signup() {
     const router = useRouter();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [emailError, setEmailError] = useState("");
+    const [passwordError, setPasswordError] = useState("");
 
 const handleClick = async () => {
+
+  if(!email){
+    setPasswordError(
+      "email and password requried "
+    );
+    return;
+  }
+
   const res = await signIn("credentials", {
     redirect: false,
     email,
     password,
   });
 
-  if(res?.error){
-    alert(
-      "invaild credentials"
+  if(res?.error) {
+    setPasswordError(
+      "Invalid email or password"
     )
-  } else {
-    router.push("/dashboard")
+    return;
   }
+  setPasswordError("")
+
+  setTimeout(() => {
+    router.push("/dashboard")
+  }, 2000)
+
+  router.push("/dashboard")
 
 };
 
-    const routing = () => {
+   const routing = () => {
         router.push("/auth/signup")
     }
 
@@ -70,26 +86,28 @@ const handleClick = async () => {
               <Input
               onChange={(e) => {
                 setEmail(e.target.value)
+                setEmailError("")
               }}
                 id="email"
                 type="email"
                 placeholder="m@example.com"
-                required
                 className="border-gray-700"
               />
+              {emailError &&  <p  className={`${GeistSans.className} flex justify-center font-semibold text-red-800 `}>{emailError}</p>}
             </div>
             <div className="grid gap-2">
               <Label htmlFor="password">Password</Label>
               <Input
               onChange={(e) => {
                 setPassword(e.target.value)
+                setPasswordError("");
               }}
                 id="password"
                 type="password"
                 placeholder="✶✶✶✶✶✶✶✶"
-                required
                 className="border-gray-700 "
               />
+              {passwordError &&  <p  className={`${GeistSans.className} flex justify-center font-semibold text-red-800 `}>{passwordError}</p>}
             </div>
           </CardContent>
 
@@ -105,6 +123,7 @@ const handleClick = async () => {
               Don't have an account?{" "}
               <button 
               onClick={routing}
+              type="button"
               className="underline hover: cursor-pointer underline-offset-4 text-indigo-600">
                 Signup
               </button>
