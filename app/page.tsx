@@ -41,7 +41,11 @@ const handleClick = () => {
 }
 
     return (
-      <div className="relative min-h-screen overflow-hidden">
+      <>
+      <div className={` ${GeistSans.className} flex justify-center items-center min-h-screen sm:hidden bg-black backdrop-blur-2xl`}>
+        <span className={`${GeistSans.className} text-xl tracking-tight  font-semibold text-shadow`}>Please switch to desktop view</span>
+</div>
+      <div className="relative hidden sm:block min-h-screen overflow-hidden">
 <div className="absolute inset-0 -z-10">
         <Particles
           particleColors={['#ffffff', '#ffffff']}
@@ -202,5 +206,6 @@ const handleClick = () => {
     </span>
 </div>
       </div>
+      </>
     );
   }
