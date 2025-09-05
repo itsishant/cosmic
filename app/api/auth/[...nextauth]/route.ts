@@ -9,6 +9,7 @@ type  Details = {
     email: string,
     password: string
 }
+
     
 const handler = NextAuth({  
 providers: [
