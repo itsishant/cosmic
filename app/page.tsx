@@ -32,7 +32,6 @@ import { getServerSession } from 'next-auth';
 ];
 
 const router = useRouter();
-const session = getServerSession();
 
 const handleClick = () => {
   setTimeout(() => {

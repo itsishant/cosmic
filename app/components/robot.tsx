@@ -11,13 +11,12 @@
       >
       
         <Spline
-        className=''
           scene={`https://prod.spline.design/${apiKey}/scene.splinecode`}
           style={{ 
-            width: '100%', 
-            height: '100%',
+            width: '123%', 
+            height: '110%',
             display: 'block'
-          }}
+          }} 
         
         />
       </div>
