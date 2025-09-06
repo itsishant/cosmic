@@ -15,10 +15,11 @@
   import { Label } from "@/app/components/ui/label"
   import { useRouter } from "next/navigation";
 
-  interface Detail {
-      respone: string,
-      token: string
-  }
+interface Detail {
+  response: string;
+  token: string;
+}
+
 
   export default function Signup() {
 

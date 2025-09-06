@@ -17,7 +17,7 @@ import {redirect, useRouter} from "next/navigation";
 import { signIn } from "next-auth/react";
 
 interface Detail {
-    respone: string,
+    response: string,
     token: string
 }
 
