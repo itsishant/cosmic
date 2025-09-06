@@ -10,19 +10,19 @@ import {
     CardFooter,
     CardHeader,
     CardTitle,
-} from "@/app/components/ui/card"
-import { Input } from "@/app/components/ui/input";
-import axios from "axios"
-import { Label } from "@/app/components/ui/label"
+} from "../../components/ui/card" 
+import { Input } from "../../components/ui/input";
+import { Label } from "../../components/ui/label";
 import { useRouter } from "next/navigation";
+import axios from "axios";
 
 interface Detail {
   response: string;
   token: string;
-}
+} 
 
 
-  export default function Signup() {
+  export default function SignUpPage() {
 
       const route = useRouter();
       const [email, setEmail] = useState("");
