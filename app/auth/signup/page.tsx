@@ -42,12 +42,12 @@ interface Detail {
       }
 
         try {
-          const response = await axios.post <Detail> ("http://localhost:3000/api/v1/signup", {
+          const response = await axios.post<Detail > ("http://localhost:3000/api/v1/signup", {
               email,
               password
           })
           const token = response.data.token;
-          const tokeny: any = localStorage.setItem("token", token);
+          localStorage.setItem("token", token);
 
           route.push("/dashboard")
       }
