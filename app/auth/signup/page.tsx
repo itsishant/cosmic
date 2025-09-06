@@ -23,7 +23,7 @@ interface Detail {
 
 
   export default function SignUpPage() {
-
+      const baseUrl = process.env.NEXT_PUBLIC_API_URL;
       const route = useRouter();
       const [email, setEmail] = useState("");
       const [password, setPassword] = useState("");
@@ -43,7 +43,7 @@ interface Detail {
       }
 
         try {
-          const response = await axios.post<Detail>("http://localhost:3000/api/v1/signup", {
+          const response = await axios.post<Detail>(`${baseUrl}/api/v1/signup`, {
               email,
               password
           })
