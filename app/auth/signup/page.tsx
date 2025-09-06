@@ -1,7 +1,7 @@
 "use client"
 
 import { GeistSans } from "geist/font/sans"
-import { Button } from "@/app/components/ui/button"
+import { Button } from "../../components/ui/button"
 import { useState } from "react";
 import {
     Card,
@@ -43,7 +43,7 @@ interface Detail {
       }
 
         try {
-          const response = await axios.post<Detail > ("http://localhost:3000/api/v1/signup", {
+          const response = await axios.post<Detail>("http://localhost:3000/api/v1/signup", {
               email,
               password
           })
