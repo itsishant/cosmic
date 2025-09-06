@@ -1,19 +1,20 @@
-  "use client"
-  import { GeistSans } from "geist/font/sans"
-  import { Button } from "@/app/components/ui/button"
-  import { useState } from "react";
-  import {
+"use client"
+
+import { GeistSans } from "geist/font/sans"
+import { Button } from "@/app/components/ui/button"
+import { useState } from "react";
+import {
     Card,
     CardContent,
     CardDescription,
     CardFooter,
     CardHeader,
     CardTitle,
-  } from "@/app/components/ui/card"
-  import { Input } from "@/app/components/ui/input";
-  import axios from "axios"
-  import { Label } from "@/app/components/ui/label"
-  import { useRouter } from "next/navigation";
+} from "@/app/components/ui/card"
+import { Input } from "@/app/components/ui/input";
+import axios from "axios"
+import { Label } from "@/app/components/ui/label"
+import { useRouter } from "next/navigation";
 
 interface Detail {
   response: string;
