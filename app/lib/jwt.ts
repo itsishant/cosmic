@@ -3,6 +3,7 @@ import { NextResponse, NextRequest } from "next/server";
 
 const secret = process.env.JWT_SECRET as string;
 
+
 export const createToken = (payload: object) => {
 
     try{
