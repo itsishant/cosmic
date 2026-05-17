@@ -8,6 +8,7 @@ interface Step {
     number: number
 }
 
+
 export const Step = ({logo: Logo, head, work, number}: Step) => {
     return (
          <div className="p-4 rounded-xl shadow ">
